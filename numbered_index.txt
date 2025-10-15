@@ -1,0 +1,529 @@
+   1: <!DOCTYPE html>
+   2: <html lang="en">
+   3: 	<head>
+   4: 		<meta charset="utf-8" />
+   5: 		<meta name="viewport" content="width=device-width,initial-scale=1" />
+   6: 		<title>Babies Breastfeeding & Beyond | Arizona Lactation Consultant</title>
+   7: 		<meta
+   8: 			name="description"
+   9: 			content="Arizona lactation consultant providing prenatal, NICU, and postpartum breastfeeding support. In-person (Phoenix area) and virtual across Arizona. Book with RN & IBCLC Catrina Popelier."
+  10: 		/>
+  11: 		<link rel="canonical" href="https://bbbaz.com/" />
+  12: 
+  13: 		<!-- Open Graph / Twitter -->
+  14: 		<meta
+  15: 			property="og:title"
+  16: 			content="Babies Breastfeeding and Beyond – Arizona Lactation Consultant"
+  17: 		/>
+  18: 		<meta
+  19: 			property="og:description"
+  20: 			content="Compassionate breastfeeding, pumping, and postpartum support. In-person (Phoenix area) & virtual across Arizona."
+  21: 		/>
+  22: 		<meta property="og:type" content="website" />
+  23: 		<meta property="og:url" content="https://bbbaz.com/" />
+  24: 		<meta property="og:image" content="assets/og-cover.jpg" />
+  25: 
+  26: 		<!-- Bootstrap 5 -->
+  27: 		<link
+  28: 			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+  29: 			rel="stylesheet"
+  30: 			integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+  31: 			crossorigin="anonymous"
+  32: 		/>
+  33: 
+  34: 		<!-- Fonts + icons -->
+  35: 		<link
+  36: 			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Newsreader:wght@600;700;800&display=swap"
+  37: 			rel="stylesheet"
+  38: 		/>
+  39: 		<link rel="icon" href="assets/favicon.ico" />
+  40: 
+  41: 		<link rel="stylesheet" href="styles.css" />
+  42: 
+  43: 		<!-- Critical inline CSS -->
+  44: 		<style>
+  45: 			:root {
+  46: 				--nav-h: 4.5rem;
+  47: 			}
+  48: 			html {
+  49: 				scroll-behavior: smooth;
+  50: 			}
+  51: 			body {
+  52: 				background: var(--bbb-paper, #f7f3ee);
+  53: 				color: var(--bbb-ink, #1f1e24);
+  54: 				font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto,
+  55: 					Helvetica, Arial, sans-serif;
+  56: 			}
+  57: 			.nav-progress {
+  58: 				height: 4px;
+  59: 			}
+  60: 		</style>
+  61: 
+  62: 		<!-- Consolidated structured data -->
+  63: 		<script type="application/ld+json">
+  64: 			{
+  65: 				"@context": "https://schema.org",
+  66: 				"@graph": [
+  67: 					{
+  68: 						"@type": "LocalBusiness",
+  69: 						"@id": "https://bbbaz.com/#localbusiness",
+  70: 						"name": "Babies Breastfeeding and Beyond",
+  71: 						"image": "https://bbbaz.com/assets/og-cover.jpg",
+  72: 						"url": "https://bbbaz.com/",
+  73: 						"telephone": "+1-623-363-9104",
+  74: 						"email": "BabiesBreastfeedingandBeyond@yahoo.com",
+  75: 						"address": {
+  76: 							"@type": "PostalAddress",
+  77: 							"addressLocality": "Phoenix",
+  78: 							"addressRegion": "AZ",
+  79: 							"addressCountry": "US"
+  80: 						},
+  81: 						"sameAs": [
+  82: 							"https://www.facebook.com/babiesbreastfeedingandbeyond",
+  83: 							"https://www.instagram.com/babiesbreastfeedingandbeyond"
+  84: 						],
+  85: 						"contactPoint": [
+  86: 							{
+  87: 								"@type": "ContactPoint",
+  88: 								"telephone": "+1-623-363-9104",
+  89: 								"contactType": "customer service",
+  90: 								"areaServed": "AZ"
+  91: 							}
+  92: 						],
+  93: 						"openingHoursSpecification": {
+  94: 							"@type": "OpeningHoursSpecification",
+  95: 							"description": "By appointment"
+  96: 						}
+  97: 					},
+  98: 					{
+  99: 						"@type": "Organization",
+ 100: 						"@id": "https://bbbaz.com/#organization",
+ 101: 						"name": "Babies Breastfeeding and Beyond",
+ 102: 						"url": "https://bbbaz.com",
+ 103: 						"logo": "https://bbbaz.com/assets/og-cover.jpg",
+ 104: 						"sameAs": [
+ 105: 							"https://www.instagram.com/babiesbreastfeedingandbeyond",
+ 106: 							"https://www.facebook.com/babiesbreastfeedingandbeyond"
+ 107: 						]
+ 108: 					}
+ 109: 				]
+ 110: 			}
+ 111: 		</script>
+ 112: 	</head>
+ 113: 	<body>
+ 114: 		<nav
+ 115: 			class="navbar navbar-expand-lg navbar-light fixed-top"
+ 116: 			role="navigation"
+ 117: 			aria-label="Primary"
+ 118: 		>
+ 119: 			<div class="container">
+ 120: 				<a class="navbar-brand d-flex align-items-center gap-2" href="#top">
+ 121: 					<div style="display: flex; flex-direction: column; line-height: 1">
+ 122: 						<span class="brand-mark">Babies Breastfeeding & Beyond</span>
+ 123: 						<span class="brand-tagline">Professional Lactation Consultant</span>
+ 124: 					</div>
+ 125: 				</a>
+ 126: 				<div class="nav-progress" aria-hidden="true">
+ 127: 					<div class="fill"></div>
+ 128: 				</div>
+ 129: 				<button
+ 130: 					class="navbar-toggler"
+ 131: 					type="button"
+ 132: 					data-bs-toggle="collapse"
+ 133: 					data-bs-target="#nav"
+ 134: 					aria-controls="nav"
+ 135: 					aria-expanded="false"
+ 136: 					aria-label="Toggle navigation"
+ 137: 				>
+ 138: 					<span class="navbar-toggler-icon"></span>
+ 139: 				</button>
+ 140: 				<div class="collapse navbar-collapse" id="nav">
+ 141: 					<ul
+ 142: 						class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-2"
+ 143: 					>
+ 144: 						<li class="nav-item"><a class="nav-link" href="#top">Home</a></li>
+ 145: 						<li class="nav-item">
+ 146: 							<a class="nav-link" href="#services">Services</a>
+ 147: 						</li>
+ 148: 						<li class="nav-item">
+ 149: 							<a class="nav-link" href="#about">About</a>
+ 150: 						</li>
+ 151: 						<li class="nav-item"><a class="nav-link" href="#faq">FAQ</a></li>
+ 152: 						<li class="nav-item">
+ 153: 							<a class="nav-link" href="#contact">Contact</a>
+ 154: 						</li>
+ 155: 						<li class="nav-item ms-lg-3">
+ 156: 							<button
+ 157: 								id="themeToggle"
+ 158: 								class="btn btn-ghost btn-sm"
+ 159: 								type="button"
+ 160: 								aria-pressed="false"
+ 161: 								aria-label="Toggle dark mode"
+ 162: 							>
+ 163: 								🌙
+ 164: 							</button>
+ 165: 						</li>
+ 166: 					</ul>
+ 167: 				</div>
+ 168: 			</div>
+ 169: 		</nav>
+ 170: 
+ 171: 		<main id="main">
+ 172: 			<header class="hero section" id="top" role="banner">
+ 173: 				<div class="orb one" aria-hidden="true"></div>
+ 174: 				<div class="orb two" aria-hidden="true"></div>
+ 175: 				<div class="container-fluid px-0">
+ 176: 					<div class="container">
+ 177: 						<div class="hero-grid">
+ 178: 							<div class="hero-content" style="flex: 1 1 48%">
+ 179: 								<div class="card card-soft p-4 p-lg-5">
+ 180: 									<h1 class="display-5 fw-bold mb-2">
+ 181: 										Babies Breastfeeding & Beyond
+ 182: 									</h1>
+ 183: 									<p class="lead mb-4">
+ 184: 										Arizona lactation consultant providing personalized
+ 185: 										breastfeeding, pumping, and postpartum support. In-person
+ 186: 										(Phoenix area) and virtual across Arizona.
+ 187: 									</p>
+ 188: 									<div class="d-flex flex-wrap gap-2 hero-ctas">
+ 189: 										<a
+ 190: 											class="btn btn-primary"
+ 191: 											href="#contact"
+ 192: 											aria-label="Book a consultation"
+ 193: 											>Book a Consultation</a
+ 194: 										>
+ 195: 									</div>
+ 196: 								</div>
+ 197: 							</div>
+ 198: 						</div>
+ 199: 					</div>
+ 200: 				</div>
+ 201: 			</header>
+ 202: 
+ 203: 			<section id="services" class="section" aria-labelledby="services-heading">
+ 204: 				<div class="container">
+ 205: 					<div class="text-center mb-5">
+ 206: 						<h2 id="services-heading" class="fw-bold">
+ 207: 							Services for Babies, Mothers & Families
+ 208: 						</h2>
+ 209: 						<p class="mb-0">
+ 210: 							Evidence‑based guidance tailored to your family's needs.
+ 211: 						</p>
+ 212: 					</div>
+ 213: 					<div class="row g-4">
+ 214: 						<div class="col-12 col-md-6 col-lg-4">
+ 215: 							<div class="card card-soft h-100 p-4">
+ 216: 								<div class="icon-circle mb-3" aria-hidden="true">🍼</div>
+ 217: 								<h3 class="h5">Prenatal Breastfeeding Support</h3>
+ 218: 								<ul class="mt-3 mb-0">
+ 219: 									<li>Preparing for breastfeeding during pregnancy</li>
+ 220: 									<li>Education and planning for postpartum</li>
+ 221: 									<li>In‑person (Phoenix area) or virtual statewide</li>
+ 222: 								</ul>
+ 223: 							</div>
+ 224: 						</div>
+ 225: 						<div class="col-12 col-md-6 col-lg-4">
+ 226: 							<div class="card card-soft h-100 p-4">
+ 227: 								<div class="icon-circle mb-3" aria-hidden="true">🏥</div>
+ 228: 								<h3 class="h5">NICU & Specialized Breastfeeding</h3>
+ 229: 								<ul class="mt-3 mb-0">
+ 230: 									<li>Latching, pumping & positioning</li>
+ 231: 									<li>Support during special circumstances</li>
+ 232: 									<li>Transitioning NICU babies home</li>
+ 233: 								</ul>
+ 234: 							</div>
+ 235: 						</div>
+ 236: 						<div class="col-12 col-md-6 col-lg-4">
+ 237: 							<div class="card card-soft h-100 p-4">
+ 238: 								<div class="icon-circle mb-3" aria-hidden="true">🌙</div>
+ 239: 								<h3 class="h5">Postpartum, 4th Trimester & Beyond</h3>
+ 240: 								<ul class="mt-3 mb-0">
+ 241: 									<li>Milk supply, return‑to‑work pumping</li>
+ 242: 									<li>Introduction to solids, weaning</li>
+ 243: 									<li>Infant/toddler development</li>
+ 244: 								</ul>
+ 245: 							</div>
+ 246: 						</div>
+ 247: 					</div>
+ 248: 				</div>
+ 249: 			</section>
+ 250: 
+ 251: 			<section id="about" class="section" aria-labelledby="about-heading">
+ 252: 				<div class="container">
+ 253: 					<div class="row g-4 align-items-center">
+ 254: 						<div class="col-12 col-lg-6">
+ 255: 							<h2
+ 256: 								id="about-heading"
+ 257: 								class="fw-bold mb-3 d-flex align-items-center gap-2 flex-wrap"
+ 258: 							>
+ 259: 								<span>Meet Catrina Popelier</span
+ 260: 								><span class="tag" aria-label="Registered Nurse">RN</span
+ 261: 								><span
+ 262: 									class="tag"
+ 263: 									aria-label="International Board Certified Lactation Consultant"
+ 264: 									>IBCLC</span
+ 265: 								>
+ 266: 							</h2>
+ 267: 							<div class="d-flex align-items-start gap-3">
+ 268: 								<div class="avatar" aria-hidden="true">CP</div>
+ 269: 								<div>
+ 270: 									<p>
+ 271: 										Registered nurse and board‑certified lactation consultant,
+ 272: 										dedicated to supporting & empowering Arizona families
+ 273: 										through every stage of their breastfeeding journey.
+ 274: 									</p>
+ 275: 									<p>
+ 276: 										Care that’s calm, practical, and judgment‑free — from
+ 277: 										preparing for your first latch to navigating NICU
+ 278: 										transitions and beyond.
+ 279: 									</p>
+ 280: 								</div>
+ 281: 							</div>
+ 282: 						</div>
+ 283: 						<div class="col-12 col-lg-6">
+ 284: 							<div class="card card-soft p-4">
+ 285: 								<h3 class="h6 text-uppercase text-muted">Service Areas</h3>
+ 286: 								<p class="mb-2">
+ 287: 									Phoenix metro (in‑person), statewide (virtual)
+ 288: 								</p>
+ 289: 								<h3 class="h6 text-uppercase text-muted">Credentials</h3>
+ 290: 								<p class="mb-0">
+ 291: 									RN, IBCLC; evidence‑based practice; trauma‑informed,
+ 292: 									infant‑centered approach.
+ 293: 								</p>
+ 294: 							</div>
+ 295: 						</div>
+ 296: 					</div>
+ 297: 				</div>
+ 298: 			</section>
+ 299: 
+ 300: 			<section id="faq" class="section" aria-labelledby="faq-heading">
+ 301: 				<div class="container">
+ 302: 					<div class="text-center mb-5">
+ 303: 						<h2 id="faq-heading" class="fw-bold">Frequently Asked Questions</h2>
+ 304: 					</div>
+ 305: 					<div class="accordion card-soft" id="faqAcc">
+ 306: 						<div class="accordion-item">
+ 307: 							<h3 class="accordion-header" id="q1h">
+ 308: 								<button
+ 309: 									class="accordion-button"
+ 310: 									type="button"
+ 311: 									data-bs-toggle="collapse"
+ 312: 									data-bs-target="#q1"
+ 313: 									aria-expanded="true"
+ 314: 									aria-controls="q1"
+ 315: 								>
+ 316: 									Do you offer virtual consultations across Arizona?
+ 317: 								</button>
+ 318: 							</h3>
+ 319: 							<div
+ 320: 								id="q1"
+ 321: 								class="accordion-collapse collapse show"
+ 322: 								aria-labelledby="q1h"
+ 323: 								data-bs-parent="#faqAcc"
+ 324: 							>
+ 325: 								<div class="accordion-body">
+ 326: 									Yes. We offer secure virtual visits statewide and in‑person
+ 327: 									appointments in the Phoenix metro area.
+ 328: 								</div>
+ 329: 							</div>
+ 330: 						</div>
+ 331: 						<div class="accordion-item">
+ 332: 							<h3 class="accordion-header" id="q2h">
+ 333: 								<button
+ 334: 									class="accordion-button collapsed"
+ 335: 									type="button"
+ 336: 									data-bs-toggle="collapse"
+ 337: 									data-bs-target="#q2"
+ 338: 									aria-expanded="false"
+ 339: 									aria-controls="q2"
+ 340: 								>
+ 341: 									Can you help with NICU transitions and pumping plans?
+ 342: 								</button>
+ 343: 							</h3>
+ 344: 							<div
+ 345: 								id="q2"
+ 346: 								class="accordion-collapse collapse"
+ 347: 								aria-labelledby="q2h"
+ 348: 								data-bs-parent="#faqAcc"
+ 349: 							>
+ 350: 								<div class="accordion-body">
+ 351: 									Absolutely. We support families through NICU discharge,
+ 352: 									establishing supply, and practical pumping schedules.
+ 353: 								</div>
+ 354: 							</div>
+ 355: 						</div>
+ 356: 						<div class="accordion-item">
+ 357: 							<h3 class="accordion-header" id="q3h">
+ 358: 								<button
+ 359: 									class="accordion-button collapsed"
+ 360: 									type="button"
+ 361: 									data-bs-toggle="collapse"
+ 362: 									data-bs-target="#q3"
+ 363: 									aria-expanded="false"
+ 364: 									aria-controls="q3"
+ 365: 								>
+ 366: 									What if breastfeeding is painful or baby isn’t latching?
+ 367: 								</button>
+ 368: 							</h3>
+ 369: 							<div
+ 370: 								id="q3"
+ 371: 								class="accordion-collapse collapse"
+ 372: 								aria-labelledby="q3h"
+ 373: 								data-bs-parent="#faqAcc"
+ 374: 							>
+ 375: 								<div class="accordion-body">
+ 376: 									We assess latch and positioning, screen for oral tethers, and
+ 377: 									create a step‑by‑step plan to reduce pain and improve feeding.
+ 378: 								</div>
+ 379: 							</div>
+ 380: 						</div>
+ 381: 					</div>
+ 382: 				</div>
+ 383: 			</section>
+ 384: 
+ 385: 			<section id="contact" class="section" aria-labelledby="contact-heading">
+ 386: 				<div class="container">
+ 387: 					<div class="row g-4">
+ 388: 						<div class="col-12">
+ 389: 							<div class="card card-soft p-4 h-100">
+ 390: 								<h2 id="contact-heading" class="fw-bold">
+ 391: 									Book a Consultation
+ 392: 								</h2>
+ 393: 								<div class="col-12 col-md-6">
+ 394: 									<h3 class="h6 text-uppercase text-muted mb-2">Office</h3>
+ 395: 									<address class="mb-3">
+ 396: 										Phoenix, Arizona • Serving families statewide (virtual)
+ 397: 									</address>
+ 398: 									<h3 class="h6 text-uppercase text-muted mb-2">Hours</h3>
+ 399: 									<p class="mb-0">By appointment</p>
+ 400: 								</div>
+ 401: 								<hr class="my-3" />
+ 402: 								<div class="row gap-3 align-items-start mt-2">
+ 403: 									<div class="col-12 col-md-6">
+ 404: 										<p class="mb-3">
+ 405: 											Choose in‑person (Phoenix area) or virtual. We’ll follow
+ 406: 											up with simple next steps.
+ 407: 										</p>
+ 408: 										<ul class="list-unstyled mb-4">
+ 409: 											<li class="mb-2">
+ 410: 												<strong>Phone:</strong>
+ 411: 												<a
+ 412: 													href="tel:16233639104"
+ 413: 													class="link-underline link-underline-opacity-0"
+ 414: 													>623‑363‑9104</a
+ 415: 												>
+ 416: 											</li>
+ 417: 											<li class="mb-2">
+ 418: 												<strong>Email:</strong>
+ 419: 												<a
+ 420: 													href="mailto:BabiesBreastfeedingandBeyond@yahoo.com"
+ 421: 													class="link-underline link-underline-opacity-0"
+ 422: 													>BabiesBreastfeedingandBeyond@yahoo.com</a
+ 423: 												>
+ 424: 											</li>
+ 425: 										</ul>
+ 426: 										<div class="d-flex flex-wrap gap-2">
+ 427: 											<a
+ 428: 												class="btn btn-primary"
+ 429: 												href="/book.html"
+ 430: 												aria-label="Book via Total Lactation Network (opens booking)"
+ 431: 												>Book via TLN</a
+ 432: 											>
+ 433: 											<a
+ 434: 												class="btn btn-outline-primary"
+ 435: 												href="https://www.instagram.com/babiesbreastfeedingandbeyond"
+ 436: 												target="_blank"
+ 437: 												rel="noopener noreferrer"
+ 438: 												aria-label="Open Instagram in a new tab"
+ 439: 												>Instagram</a
+ 440: 											>
+ 441: 											<a
+ 442: 												class="btn btn-outline-primary"
+ 443: 												href="https://www.facebook.com/babiesbreastfeedingandbeyond"
+ 444: 												target="_blank"
+ 445: 												rel="noopener noreferrer"
+ 446: 												aria-label="Open Facebook in a new tab"
+ 447: 												>Facebook</a
+ 448: 											>
+ 449: 										</div>
+ 450: 									</div>
+ 451: 								</div>
+ 452: 							</div>
+ 453: 						</div>
+ 454: 					</div>
+ 455: 				</div>
+ 456: 			</section>
+ 457: 		</main>
+ 458: 
+ 459: 		<footer class="footer py-4">
+ 460: 			<div
+ 461: 				class="container d-flex flex-column flex-md-row align-items-center justify-content-between gap-3"
+ 462: 			>
+ 463: 				<div>
+ 464: 					<strong>Babies Breastfeeding & Beyond</strong> • Phoenix, AZ •
+ 465: 					<a
+ 466: 						href="tel:16233639104"
+ 467: 						class="link-underline link-underline-opacity-0"
+ 468: 						>623‑363‑9104</a
+ 469: 					>
+ 470: 				</div>
+ 471: 				<div class="small text-muted">
+ 472: 					© <span id="year">2025</span> BBB AZ •
+ 473: 					<a class="text-muted" href="#top">Back to top</a>
+ 474: 				</div>
+ 475: 			</div>
+ 476: 		</footer>
+ 477: 
+ 478: 		<!-- FAQ schema -->
+ 479: 		<script type="application/ld+json">
+ 480: 			{
+ 481: 				"@context": "https://schema.org",
+ 482: 				"@type": "FAQPage",
+ 483: 				"mainEntity": [
+ 484: 					{
+ 485: 						"@type": "Question",
+ 486: 						"name": "Do you offer virtual consultations across Arizona?",
+ 487: 						"acceptedAnswer": {
+ 488: 							"@type": "Answer",
+ 489: 							"text": "Yes. We offer secure virtual visits statewide and in-person appointments in the Phoenix metro area."
+ 490: 						}
+ 491: 					},
+ 492: 					{
+ 493: 						"@type": "Question",
+ 494: 						"name": "Can you help with NICU transitions and pumping plans?",
+ 495: 						"acceptedAnswer": {
+ 496: 							"@type": "Answer",
+ 497: 							"text": "Absolutely. We support families through NICU discharge, establishing supply, and practical pumping schedules."
+ 498: 						}
+ 499: 					},
+ 500: 					{
+ 501: 						"@type": "Question",
+ 502: 						"name": "What if breastfeeding is painful or baby isn’t latching?",
+ 503: 						"acceptedAnswer": {
+ 504: 							"@type": "Answer",
+ 505: 							"text": "We assess latch and positioning, screen for oral tethers, and create a step-by-step plan to reduce pain and improve feeding."
+ 506: 						}
+ 507: 					}
+ 508: 				]
+ 509: 			}
+ 510: 		</script>
+ 511: 
+ 512: 		<noscript>
+ 513: 			<div class="container py-3">
+ 514: 				<div class="alert alert-warning small mb-0" role="status">
+ 515: 					Some enhancements (dark mode, animations, and auto‑highlighting in the
+ 516: 					navbar) require JavaScript. The site still works without it.
+ 517: 				</div>
+ 518: 			</div>
+ 519: 		</noscript>
+ 520: 
+ 521: 		<script src="main.js" defer></script>
+ 522: 		<script
+ 523: 			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+ 524: 			integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+ 525: 			crossorigin="anonymous"
+ 526: 			defer
+ 527: 		></script>
+ 528: 	</body>
+ 529: </html>
