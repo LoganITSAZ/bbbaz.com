@@ -1145,8 +1145,7 @@ header.hero .container-fluid {
 }
 
 /* Contact form styles */
-.contact-form .form-control,
-.contact-form .form-select {
+.contact-form .form-control {
 	background-color: var(--bbb-white);
 	border: 2px solid var(--bs-border-color);
 	color: var(--bbb-ink);
@@ -1155,8 +1154,7 @@ header.hero .container-fluid {
 	font-size: clamp(0.9rem, 1.1vw, 1rem);
 	transition: border-color 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
 }
-.contact-form .form-control:focus,
-.contact-form .form-select:focus {
+.contact-form .form-control:focus {
 	border-color: var(--bbb-primary);
 	box-shadow: 0 0 0 3px rgba(63, 109, 136, 0.18);
 	outline: none;
@@ -1178,15 +1176,124 @@ header.hero .container-fluid {
 	min-height: 100px;
 }
 /* Dark mode form adjustments */
-:root[data-theme="dark"] .contact-form .form-control,
-:root[data-theme="dark"] .contact-form .form-select {
+:root[data-theme="dark"] .contact-form .form-control {
 	background-color: var(--bbb-white);
 	border-color: var(--bs-border-color);
 	color: var(--bbb-ink);
 }
-:root[data-theme="dark"] .contact-form .form-select option {
-	background-color: var(--bbb-paper);
+
+/* Custom Bootstrap-style dropdown replacing native <select> */
+.contact-dropdown {
+	position: relative;
+}
+/* Invisible validation anchor (position: absolute keeps it out of flow) */
+.contact-dropdown-input {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	pointer-events: none;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	z-index: -1;
+}
+.contact-form .contact-dropdown-toggle {
+	background-color: var(--bbb-white);
+	border: 2px solid var(--bs-border-color);
 	color: var(--bbb-ink);
+	border-radius: var(--btn-radius);
+	padding: 0.625rem 2.25rem 0.625rem 0.875rem;
+	font-size: clamp(0.9rem, 1.1vw, 1rem);
+	transition: border-color 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
+	box-shadow: none;
+}
+.contact-form .contact-dropdown-toggle:hover,
+.contact-form .contact-dropdown-toggle:focus,
+.contact-form .contact-dropdown-toggle.show {
+	border-color: var(--bbb-primary);
+	box-shadow: 0 0 0 3px rgba(63, 109, 136, 0.18);
+	background-color: rgba(255, 255, 255, 0.98);
+	color: var(--bbb-ink);
+	outline: none;
+}
+.contact-dropdown-label {
+	color: var(--bbb-secondary);
+	opacity: 0.7;
+	pointer-events: none;
+}
+.contact-dropdown-label.selected {
+	color: var(--bbb-ink);
+	opacity: 1;
+}
+.contact-dropdown .dropdown-menu {
+	border-radius: var(--btn-radius);
+	border: 1px solid var(--bs-border-color);
+	box-shadow: var(--shadow-hover);
+	padding: 0.25rem 0;
+	margin-top: 0.25rem !important;
+	list-style: none;
+}
+.contact-dropdown .dropdown-menu li {
+	list-style: none;
+	padding-left: 0;
+	margin-bottom: 0;
+}
+.contact-dropdown .dropdown-menu li::before {
+	display: none;
+}
+.contact-dropdown .dropdown-item {
+	color: var(--bbb-ink);
+	padding: 0.5rem 1rem;
+	font-size: clamp(0.9rem, 1.1vw, 1rem);
+	width: 100%;
+	text-align: left;
+	background: none;
+	border: 0;
+}
+.contact-dropdown .dropdown-item:hover,
+.contact-dropdown .dropdown-item:focus {
+	background-color: rgba(63, 109, 136, 0.08);
+	color: var(--bbb-primary);
+}
+.contact-dropdown .dropdown-item.active {
+	background-color: rgba(63, 109, 136, 0.12);
+	color: var(--bbb-primary);
+	font-weight: 600;
+}
+/* Validation states — hidden input precedes button in DOM so sibling selectors work */
+.was-validated .contact-dropdown-input:invalid + .contact-dropdown-toggle {
+	border-color: var(--bs-danger, #dc3545);
+}
+.was-validated .contact-dropdown-input:valid + .contact-dropdown-toggle {
+	border-color: var(--bbb-teal);
+}
+.was-validated .contact-dropdown-input:invalid ~ .invalid-feedback {
+	display: block;
+}
+/* Dark mode custom dropdown */
+:root[data-theme="dark"] .contact-form .contact-dropdown-toggle {
+	background-color: var(--bbb-white);
+	border-color: var(--bs-border-color);
+	color: var(--bbb-ink);
+}
+:root[data-theme="dark"] .contact-dropdown .dropdown-menu {
+	background-color: var(--bbb-white);
+	border-color: var(--bs-border-color);
+}
+:root[data-theme="dark"] .contact-dropdown .dropdown-item {
+	color: var(--bbb-ink);
+}
+:root[data-theme="dark"] .contact-dropdown .dropdown-item:hover,
+:root[data-theme="dark"] .contact-dropdown .dropdown-item:focus {
+	background-color: rgba(127, 182, 214, 0.12);
+	color: var(--bs-link-color);
+}
+:root[data-theme="dark"] .contact-dropdown .dropdown-item.active {
+	background-color: rgba(127, 182, 214, 0.18);
+	color: var(--bs-link-color);
 }
 
 /* Testimonial carousel card */
@@ -1242,10 +1349,10 @@ header.hero .container-fluid {
 }
 
 /* Bootstrap form validation styles */
+
+/* Inputs and textareas: show icon feedback */
 .contact-form .form-control:user-invalid,
-.contact-form .form-select:user-invalid,
-.was-validated .contact-form .form-control:invalid,
-.was-validated .contact-form .form-select:invalid {
+.was-validated .contact-form .form-control:invalid {
 	border-color: var(--bs-danger, #dc3545);
 	background-image: linear-gradient(45deg, transparent 48%, #dc3545 49%, #dc3545 51%, transparent 52%);
 	background-size: 8px 8px;
@@ -1254,15 +1361,23 @@ header.hero .container-fluid {
 	padding-right: 2.5rem;
 }
 .contact-form .form-control:user-valid,
-.contact-form .form-select:user-valid,
-.was-validated .contact-form .form-control:valid,
-.was-validated .contact-form .form-select:valid {
+.was-validated .contact-form .form-control:valid {
 	border-color: var(--bbb-teal);
 	background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%232fae93' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
 	background-repeat: no-repeat;
 	background-position: right 12px center;
 	background-size: 16px 12px;
 	padding-right: 2.5rem;
+}
+
+/* Selects: border-color only — preserve Bootstrap's native dropdown chevron */
+.contact-form .form-select:user-invalid,
+.was-validated .contact-form .form-select:invalid {
+	border-color: var(--bs-danger, #dc3545);
+}
+.contact-form .form-select:user-valid,
+.was-validated .contact-form .form-select:valid {
+	border-color: var(--bbb-teal);
 }
 /* Hide honeypot field */
 .contact-form .visually-hidden-focusable:not(:focus):not(:focus-within) {

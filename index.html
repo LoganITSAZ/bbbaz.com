@@ -13,11 +13,11 @@
 		<!-- Open Graph / Twitter -->
 		<meta
 			property="og:title"
-			content="Babies Breastfeeding and Beyond � International Board Certified Lactation Consultant"
+			content="Babies Breastfeeding and Beyond | International Board Certified Lactation Consultant"
 		/>
 		<meta
 			property="og:description"
-			content="Compassionate breastfeeding, pumping, and postpartum support. In-person (Phoenix area) & virtual across Arizona."
+			content="Compassionate breastfeeding, pumping, and postpartum support. In-person (Phoenix area) &amp; virtual across Arizona."
 		/>
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="https://bbbaz.com/" />
@@ -433,7 +433,7 @@
 									aria-expanded="false"
 									aria-controls="q3"
 								>
-									What if breastfeeding is painful or baby isn�t latching?
+									What if breastfeeding is painful or baby isn't latching?
 								</button>
 							</h3>
 							<div
@@ -587,25 +587,46 @@
 									</div>
 									<div class="row g-3 mb-3">
 										<div class="col-12 col-sm-6">
-											<label for="contact-type" class="form-label small fw-bold">Consultation Type <span class="text-danger" aria-hidden="true">*</span><span class="visually-hidden">(required)</span></label>
-											<select class="form-select" id="contact-type" name="consultation_type" required aria-describedby="type-feedback">
-												<option value="" disabled selected>Select...</option>
-												<option value="Prenatal">Prenatal</option>
-												<option value="Postpartum">Postpartum</option>
-												<option value="Follow-up">Follow-up</option>
-												<option value="Other">Other / Not sure</option>
-											</select>
-											<div id="type-feedback" class="invalid-feedback">Please select a consultation type.</div>
+											<label for="contact-type-btn" class="form-label small fw-bold">Consultation Type <span class="text-danger" aria-hidden="true">*</span><span class="visually-hidden">(required)</span></label>
+											<div class="contact-dropdown" id="contact-type-wrapper">
+												<!-- Invisible validation input — precedes button so CSS sibling selectors work -->
+												<input type="text" name="consultation_type" id="contact-type" required readonly tabindex="-1" aria-hidden="true" class="contact-dropdown-input" />
+												<button
+													class="btn contact-dropdown-toggle w-100 text-start dropdown-toggle"
+													type="button"
+													data-bs-toggle="dropdown"
+													aria-expanded="false"
+													id="contact-type-btn"
+													aria-describedby="type-feedback"
+												><span class="contact-dropdown-label">Select...</span></button>
+												<ul class="dropdown-menu w-100" aria-labelledby="contact-type-btn">
+													<li><button class="dropdown-item" type="button" data-value="Prenatal">Prenatal</button></li>
+													<li><button class="dropdown-item" type="button" data-value="Postpartum">Postpartum</button></li>
+													<li><button class="dropdown-item" type="button" data-value="Follow-up">Follow-up</button></li>
+													<li><button class="dropdown-item" type="button" data-value="Other">Other / Not sure</button></li>
+												</ul>
+												<div id="type-feedback" class="invalid-feedback">Please select a consultation type.</div>
+											</div>
 										</div>
 										<div class="col-12 col-sm-6">
-													<label for="contact-visit" class="form-label small fw-bold">Visit Preference <span class="text-danger" aria-hidden="true">*</span><span class="visually-hidden">(required)</span></label>
-													<select class="form-select" id="contact-visit" name="visit_preference" required aria-describedby="visit-feedback">
-														<option value="" disabled selected>Select...</option>
-														<option value="In-person (Phoenix area)">In-person (Phoenix area)</option>
-														<option value="Virtual">Virtual</option>
-														<option value="No preference">No preference</option>
-													</select>
-													<div id="visit-feedback" class="invalid-feedback">Please select a visit preference.</div>
+											<label for="contact-visit-btn" class="form-label small fw-bold">Visit Preference <span class="text-danger" aria-hidden="true">*</span><span class="visually-hidden">(required)</span></label>
+											<div class="contact-dropdown" id="contact-visit-wrapper">
+												<input type="text" name="visit_preference" id="contact-visit" required readonly tabindex="-1" aria-hidden="true" class="contact-dropdown-input" />
+												<button
+													class="btn contact-dropdown-toggle w-100 text-start dropdown-toggle"
+													type="button"
+													data-bs-toggle="dropdown"
+													aria-expanded="false"
+													id="contact-visit-btn"
+													aria-describedby="visit-feedback"
+												><span class="contact-dropdown-label">Select...</span></button>
+												<ul class="dropdown-menu w-100" aria-labelledby="contact-visit-btn">
+													<li><button class="dropdown-item" type="button" data-value="In-person (Phoenix area)">In-person (Phoenix area)</button></li>
+													<li><button class="dropdown-item" type="button" data-value="Virtual">Virtual</button></li>
+													<li><button class="dropdown-item" type="button" data-value="No preference">No preference</button></li>
+												</ul>
+												<div id="visit-feedback" class="invalid-feedback">Please select a visit preference.</div>
+											</div>
 										</div>
 									</div>
 									<div class="mb-3">
@@ -691,7 +712,7 @@
 					},
 					{
 						"@type": "Question",
-						"name": "What if breastfeeding is painful or baby isn�t latching?",
+							"name": "What if breastfeeding is painful or baby isn't latching?",
 						"acceptedAnswer": {
 							"@type": "Answer",
 							"text": "I assess latch and positioning, screen for oral tethers, and create a step-by-step plan to reduce pain and improve feeding."
@@ -718,15 +739,15 @@
 				if (form) {
 					const params = new URLSearchParams(window.location.search);
 					if (params.has('success')) {
-						const alert = document.createElement('div');
-						alert.className = 'alert alert-success alert-dismissible fade show';
-						alert.innerHTML = 'Thank you! Your message was sent successfully. I\'ll get back to you shortly.';
-						const dismissBtn = document.createElement('button');
-						dismissBtn.type = 'button';
-						dismissBtn.className = 'btn-close';
-						dismissBtn.setAttribute('data-bs-dismiss', 'alert');
-						alert.appendChild(dismissBtn);
-						form.parentElement.insertBefore(alert, form);
+				const alertEl = document.createElement('div');
+					alertEl.className = 'alert alert-success alert-dismissible fade show';
+					alertEl.innerHTML = 'Thank you! Your message was sent successfully. I\'ll get back to you shortly.';
+					const dismissBtn = document.createElement('button');
+					dismissBtn.type = 'button';
+					dismissBtn.className = 'btn-close';
+					dismissBtn.setAttribute('data-bs-dismiss', 'alert');
+					alertEl.appendChild(dismissBtn);
+					form.parentElement.insertBefore(alertEl, form);
 					}
 				}
 			});

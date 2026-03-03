@@ -306,7 +306,7 @@ console.log('main.js loaded');
 	const carousel = document.getElementById('testimonialsCarousel');
 	if (!carousel) return;
 	
-	const carouselInstance = new bootstrap.Carousel(carousel, {
+	new bootstrap.Carousel(carousel, {
 		interval: 8000, // auto-advance every 8 seconds
 		wrap: true,
 		pause: 'hover', // pause on hover for better UX
@@ -341,10 +341,57 @@ console.log('main.js loaded');
     if (el) el.textContent = y;
 })();
 
+// Custom dropdown (replaces native <select>) — syncs selection to hidden input
+(function () {
+    function initDropdowns() {
+        document.querySelectorAll('.contact-dropdown').forEach(function (wrapper) {
+            var toggle = wrapper.querySelector('.contact-dropdown-toggle');
+            var label = wrapper.querySelector('.contact-dropdown-label');
+            var input = wrapper.querySelector('.contact-dropdown-input');
+            var items = wrapper.querySelectorAll('.dropdown-item');
+
+            items.forEach(function (item) {
+                item.addEventListener('click', function () {
+                    input.value = this.dataset.value;
+                    label.textContent = this.textContent;
+                    label.classList.add('selected');
+                    items.forEach(function (i) { i.classList.remove('active'); });
+                    this.classList.add('active');
+                });
+            });
+        });
+    }
+
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initDropdowns);
+    } else {
+        initDropdowns();
+    }
+})();
+
 // Bootstrap form validation with reCAPTCHA v3
 (function () {
     'use strict';
     var RECAPTCHA_SITE_KEY = '6LcT4n0sAAAAACmXbW8jkaQ6zVW6mwKsWV2o684K';
+    
+    function clearForms() {
+        var forms = document.querySelectorAll('.needs-validation');
+        forms.forEach(function (form) {
+            form.reset();
+            form.classList.remove('was-validated');
+        });
+        // Reset custom dropdowns — form.reset() clears the hidden input value
+        // but the visible label and active item state must be reset manually
+        document.querySelectorAll('.contact-dropdown').forEach(function (wrapper) {
+            var label = wrapper.querySelector('.contact-dropdown-label');
+            var items = wrapper.querySelectorAll('.dropdown-item');
+            if (label) {
+                label.textContent = 'Select...';
+                label.classList.remove('selected');
+            }
+            items.forEach(function (i) { i.classList.remove('active'); });
+        });
+    }
     
     function initFormHandlers() {
         console.log('Initializing form handlers');
@@ -420,8 +467,12 @@ console.log('main.js loaded');
     
     // Initialize when DOM is ready
     if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initFormHandlers);
+        document.addEventListener('DOMContentLoaded', function () {
+            clearForms();
+            initFormHandlers();
+        });
     } else {
+        clearForms();
         initFormHandlers();
     }
 })();
