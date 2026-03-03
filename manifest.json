@@ -1,0 +1,19 @@
+{
+	"name": "Babies Breastfeeding & Beyond",
+	"short_name": "BBB AZ",
+	"description": "Arizona lactation consultant providing prenatal, NICU, and postpartum breastfeeding support.",
+	"start_url": "/",
+	"display": "standalone",
+	"background_color": "#f7f3ee",
+	"theme_color": "#3f6d88",
+	"orientation": "portrait-primary",
+	"icons": [
+		{
+			"src": "assets/catrina.png",
+			"sizes": "192x192",
+			"type": "image/png",
+			"purpose": "any maskable"
+		}
+	],
+	"categories": ["health", "medical"]
+}

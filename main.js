@@ -1,3 +1,5 @@
+console.log('main.js loaded');
+
 // Theme toggle: respect system preference, allow toggle, persist choice, and swap icon
 (function () {
 	const root = document.documentElement;
@@ -26,11 +28,11 @@
 
       // Inline, dependency-free icons that inherit currentColor
       const MOON_SVG =
-        '<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" focusable="false" style="vertical-align:-0.15em">\n' +
+        '<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" focusable="false">\n' +
         '  <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 1021 12.79z"/>\n' +
         '</svg>';
       const SUN_SVG =
-        '<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" focusable="false" style="vertical-align:-0.15em">\n' +
+        '<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" focusable="false">\n' +
         '  <path d="M6.76 4.84l-1.8-1.79-1.41 1.41 1.79 1.8 1.42-1.42zm10.48 0l1.79-1.8 1.41 1.41-1.8 1.79-1.4-1.4zM12 4V1h-0v3h0zm0 19v-3h0v3h0zM4 12H1v0h3v0zm19 0h-3v0h3v0zM6.76 19.16l-1.42 1.42-1.79-1.8 1.41-1.41 1.8 1.79zm10.48 0l1.4 1.4 1.8-1.79-1.41-1.41-1.79 1.8zM12 8a4 4 0 100 8 4 4 0 000-8z"/>\n' +
         '</svg>';
 
@@ -78,23 +80,6 @@
 
 	// Run immediately; if the button isn't present, initTheme will retry on DOMContentLoaded.
 	initTheme();
-})();
-
-// Move the care blurb section below Services
-(function () {
-  function moveBlurb() {
-    var services = document.getElementById('services');
-    var blurb = document.getElementById('care-blurb');
-    if (!services || !blurb) return;
-    if (services.nextElementSibling !== blurb) {
-      services.parentNode.insertBefore(blurb, services.nextElementSibling);
-    }
-  }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', moveBlurb, { once: true });
-  } else {
-    moveBlurb();
-  }
 })();
 
 // Collapse navbar when clicking outside or on a nav link (mobile friendliness)
@@ -316,6 +301,19 @@
 	}
 })();
 
+// Testimonials carousel auto-advance
+(function () {
+	const carousel = document.getElementById('testimonialsCarousel');
+	if (!carousel) return;
+	
+	const carouselInstance = new bootstrap.Carousel(carousel, {
+		interval: 8000, // auto-advance every 8 seconds
+		wrap: true,
+		pause: 'hover', // pause on hover for better UX
+		touch: true
+	});
+})();
+
 // Button ripple effect (respects reduced motion)
 (function () {
   const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -341,4 +339,89 @@
     var el = document.getElementById("year");
     var y = new Date().getFullYear();
     if (el) el.textContent = y;
+})();
+
+// Bootstrap form validation with reCAPTCHA v3
+(function () {
+    'use strict';
+    var RECAPTCHA_SITE_KEY = '6Ldd130aAAAAACyUTo4XMfWf3CoPyq7U1hAGoTK';
+    
+    function initFormHandlers() {
+        console.log('Initializing form handlers');
+        var forms = document.querySelectorAll('.needs-validation');
+        console.log('Found ' + forms.length + ' form(s)');
+        
+        forms.forEach(function (form) {
+            console.log('Attaching submit handler to form');
+            form.addEventListener('submit', function (event) {
+            // Prevent default submission to handle reCAPTCHA first
+            event.preventDefault();
+            
+            if (!form.checkValidity()) {
+                event.stopPropagation();
+                form.classList.add('was-validated');
+                return;
+            }
+            
+            form.classList.add('was-validated');
+            
+            // Add loading state to button
+            var submitBtn = form.querySelector('button[type="submit"]');
+            var originalText = submitBtn ? submitBtn.innerHTML : '';
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Sending...';
+            }
+            
+            // Get reCAPTCHA token and submit
+            console.log('grecaptcha available:', typeof grecaptcha !== 'undefined');
+            if (typeof grecaptcha !== 'undefined' && grecaptcha.ready) {
+                console.log('Calling grecaptcha.ready()');
+                grecaptcha.ready(function () {
+                    console.log('grecaptcha ready, executing...');
+                    grecaptcha.execute(RECAPTCHA_SITE_KEY, { action: 'submit' })
+                        .then(function (token) {
+                            console.log('reCAPTCHA token generated successfully:', token.substring(0, 20) + '...');
+                            var tokenField = document.getElementById('recaptcha-token');
+                            console.log('Token field element:', tokenField);
+                            if (tokenField) {
+                                tokenField.value = token;
+                                console.log('Token field value set. Final value:', tokenField.value.substring(0, 20) + '...');
+                            } else {
+                                console.error('Token field not found - element with id "recaptcha-token" does not exist');
+                            }
+                            // Small delay to ensure token is set before submission
+                            setTimeout(function () {
+                                console.log('Submitting form now');
+                                form.submit();
+                            }, 100);
+                        })
+                        .catch(function (err) {
+                            console.error('reCAPTCHA execute error:', err);
+                            // Restore button on error
+                            if (submitBtn) {
+                                submitBtn.disabled = false;
+                                submitBtn.innerHTML = originalText;
+                            }
+                        });
+                });
+            } else {
+                console.warn('grecaptcha not available - typeof grecaptcha:', typeof grecaptcha);
+                // If reCAPTCHA not loaded, restore button and show error
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalText;
+                }
+                alert('reCAPTCHA is not loaded. Please refresh the page and try again.');
+            }
+        }, false);
+        });
+    }
+    
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initFormHandlers);
+    } else {
+        initFormHandlers();
+    }
 })();

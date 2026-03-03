@@ -13,7 +13,7 @@
 		<!-- Open Graph / Twitter -->
 		<meta
 			property="og:title"
-			content="Babies Breastfeeding and Beyond – International Board Certified Lactation Consultant"
+			content="Babies Breastfeeding and Beyond � International Board Certified Lactation Consultant"
 		/>
 		<meta
 			property="og:description"
@@ -21,7 +21,9 @@
 		/>
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content="https://bbbaz.com/" />
-		<meta property="og:image" content="assets/client-photo.JPEG" />
+		<meta property="og:image" content="https://bbbaz.com/assets/client-photo.JPEG" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
 		<meta property="og:site_name" content="Babies Breastfeeding and Beyond" />
 		<meta property="og:locale" content="en_US" />
 
@@ -32,16 +34,18 @@
 
 		<meta name="theme-color" content="#f7f3ee" media="(prefers-color-scheme: light)" />
 		<meta name="theme-color" content="#121016" media="(prefers-color-scheme: dark)" />
+		<meta name="author" content="Catrina Popelier, RN IBCLC" />
+		<meta name="referrer" content="strict-origin-when-cross-origin" />
 
 		<!-- Resource Hints -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+		<link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+		<link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
 
-		<!-- Preload above-the-fold images -->
-		<link rel="preload" as="image" href="assets/client-photo.JPEG" imagesizes="100vw" />
-		<link rel="preload" as="image" href="assets/family.jpg" imagesizes="100vw" />
-		<link rel="preload" as="image" href="assets/support.jpg" imagesizes="100vw" />
+		<!-- Preload critical above-the-fold hero image -->
+		<link rel="preload" as="image" href="assets/client-photo.JPEG" fetchpriority="high" />
 
 		<!-- Bootstrap 5 -->
 		<link
@@ -53,10 +57,15 @@
 
 		<!-- Fonts + icons -->
 		<link
-			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Newsreader:wght@600;700;800&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Newsreader:wght@600;700;800&display=swap"
 			rel="stylesheet"
 		/>
 		<link rel="icon" href="assets/catrina.png" type="image/png" />
+		<link rel="apple-touch-icon" href="assets/catrina.png" />
+		<link rel="manifest" href="manifest.json" />
+
+		<!-- reCAPTCHA v3 -->
+		<script src="https://www.google.com/recaptcha/api.js?render=6Ldd130aAAAAACyUTo4XMfWf3CoPyq7U1hAGoTK" async defer></script>
 
 		<link rel="stylesheet" href="styles.css" />
 
@@ -140,7 +149,7 @@
 		>
 			<div class="container">
 				<a class="navbar-brand d-flex align-items-center gap-2" href="#top">
-					<div style="display: flex; flex-direction: column; line-height: 1">
+					<div class="brand-text">
 						<span class="brand-mark">Babies Breastfeeding & Beyond</span>
 						<span class="brand-tagline">International Board Certified Lactation Consultant</span>
 					</div>
@@ -148,31 +157,18 @@
 				<div class="nav-progress" aria-hidden="true">
 					<div class="fill"></div>
 				</div>
-				<!-- Right-side tools: hamburger + theme toggle -->
-				<div class="navbar-tools d-flex align-items-center gap-2">
-					<button
-						class="navbar-toggler"
-						type="button"
-						data-bs-toggle="collapse"
-						data-bs-target="#nav"
-						aria-controls="nav"
-						aria-expanded="false"
-						aria-label="Toggle navigation"
-					>
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					<button
-						id="themeToggle"
-						class="btn btn-ghost btn-sm"
-						type="button"
-						aria-pressed="false"
-						aria-label="Toggle dark mode"
-					>
-						<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" focusable="false" style="vertical-align:-0.15em">
-							<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 1021 12.79z"/>
-						</svg>
-					</button>
-				</div>
+				<!-- Navigation hamburger toggle -->
+				<button
+					class="navbar-toggler"
+					type="button"
+					data-bs-toggle="collapse"
+					data-bs-target="#nav"
+					aria-controls="nav"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					<span class="navbar-toggler-icon"></span>
+				</button>
 				<div class="collapse navbar-collapse" id="nav">
 					<ul
 						class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-lg-center gap-lg-2"
@@ -188,19 +184,33 @@
 						<li class="nav-item">
 							<a class="nav-link" href="#contact">Contact</a>
 						</li>
+						<li class="nav-item nav-item-theme">
+							<button
+								id="themeToggle"
+								class="btn btn-ghost btn-sm theme-toggle-btn"
+								type="button"
+								aria-pressed="false"
+								aria-label="Toggle dark mode"
+							>
+								<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="currentColor" focusable="false">
+									<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 1021 12.79z"/>
+								</svg>
+								<span class="theme-toggle-label">Theme</span>
+							</button>
+						</li>
 					</ul>
 				</div>
 			</div>
 		</nav>
 
 		<main id="main">
-			<header class="hero section" id="top" role="banner">
+			<header class="hero section" id="top" role="banner" style="background-image: url('assets/client-photo.JPEG')">
 				<div class="orb one" aria-hidden="true"></div>
 				<div class="orb two" aria-hidden="true"></div>
 				<div class="container-fluid px-0">
 					<div class="container">
 						<div class="hero-grid">
-							<div class="hero-content" style="flex: 1 1 48%">
+							<div class="hero-content flex-grow-1">
 								<div class="card card-soft p-4 p-lg-5">
 									<h1 class="display-5 fw-bold mb-2">
 										Babies Breastfeeding & Beyond
@@ -223,17 +233,6 @@
 					</div>
 				</div>
 			</header>
-
-			<section id="care-blurb" class="section" aria-label="Care philosophy">
-				<div class="container">
-					<div class="card card-soft p-4 p-lg-5 text-center">
-						<p class="lead mb-2">Sometimes, all we need is the right support.
-						Calm, practical, judgment-free support&mdash;from first latch to homecoming and beyond. A strong support system <em>makes things happen</em>.</p>
-					</div>
-				</div>
-</section>
-
-
 
 			<section id="services" class="section" aria-labelledby="services-heading">
 				<div class="container"> 
@@ -280,9 +279,15 @@
 				</div>
 				</div>
 			</section>
-			
 
-
+			<section id="care-blurb" class="section" aria-label="Care philosophy">
+				<div class="container">
+					<div class="card card-soft p-4 p-lg-5 text-center">
+						<p class="lead mb-2">Sometimes, all we need is the right support.
+						Calm, practical, judgment-free support&mdash;from first latch to homecoming and beyond. A strong support system <em>makes things happen</em>.</p>
+					</div>
+				</div>
+			</section>
 
 			<section id="about" class="section" aria-labelledby="about-heading">
 			<div class="container">
@@ -316,7 +321,7 @@
 						<div class="about-card__divider" aria-hidden="true"></div>
 						<div class="about-card__details">
 														<div class="about-card__section">
-								<h3 class="h6 text-uppercase text-muted mb-2">Credentials</h3>
+								<h3 class="h6 text-uppercase text-body-secondary mb-2">Credentials</h3>
 								<ul class="list-unstyled small mb-0">
 									<li>Registered Nurse (RN)</li>
 									<li>International Board Certified Lactation Consultant (IBCLC)</li>
@@ -324,7 +329,7 @@
 								</ul>
 							</div>
 							<div class="about-card__section">
-								<h3 class="h6 text-uppercase text-muted mb-2">I Specialize In</h3>
+								<h3 class="h6 text-uppercase text-body-secondary mb-2">I Specialize In</h3>
 								<ul class="list-unstyled small mb-0">
 									<li>Breastfeeding and pumping</li>
 									<li>Postpartum mental health and infant mental health</li>
@@ -428,7 +433,7 @@
 									aria-expanded="false"
 									aria-controls="q3"
 								>
-									What if breastfeeding is painful or baby isn’t latching?
+									What if breastfeeding is painful or baby isn�t latching?
 								</button>
 							</h3>
 							<div
@@ -455,9 +460,9 @@
 							<button type="button" data-bs-target="#testimonialsCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
 							<button type="button" data-bs-target="#testimonialsCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
 						</div>
-						<div class="carousel-inner">
+						<div class="carousel-inner" aria-live="polite">
 							<div class="carousel-item active">
-								<div class="card card-soft p-4 p-lg-5 mx-auto" style="max-width: 720px;">
+								<div class="card card-soft p-4 p-lg-5 mx-auto testimonial-card">
 									<figure class="mb-0">
 										<blockquote class="blockquote mb-2">&ldquo;Catrina&rsquo;s calm guidance made all the difference for our first weeks at home.&rdquo;</blockquote>
 										<figcaption class="blockquote-footer mb-0">Parent, Phoenix</figcaption>
@@ -465,7 +470,7 @@
 								</div>
 							</div>
 							<div class="carousel-item">
-								<div class="card card-soft p-4 p-lg-5 mx-auto" style="max-width: 720px;">
+								<div class="card card-soft p-4 p-lg-5 mx-auto testimonial-card">
 									<figure class="mb-0">
 										<blockquote class="blockquote mb-2">&ldquo;Clear, practical, and judgment-free support&mdash;from pumping plans to perfecting latch.&rdquo;</blockquote>
 										<figcaption class="blockquote-footer mb-0">Family, Arizona</figcaption>
@@ -495,18 +500,18 @@
 							</p>
 							<div class="row g-3 contact-meta">
 								<div class="col-6 col-sm-5">
-									<h3 class="h6 text-uppercase text-muted mb-2">Visit Options</h3>
+									<h3 class="h6 text-uppercase text-body-secondary mb-2">Visit Options</h3>
 									<ul class="list-unstyled small mb-0">
 										<li>Greater Phoenix (in-person)</li>
 										<li>Statewide (virtual)</li>
 									</ul>
 								</div>
 								<div class="col-6 col-sm-5">
-									<h3 class="h6 text-uppercase text-muted mb-2">Hours</h3>
+									<h3 class="h6 text-uppercase text-body-secondary mb-2">Hours</h3>
 								<p class="small mb-0">By appointment</p>
 								</div>
 								<div class="col-12">
-									<h3 class="h6 text-uppercase text-muted mb-2">Consultation Types</h3>
+									<h3 class="h6 text-uppercase text-body-secondary mb-2">Consultation Types</h3>
 									<ul class="list-unstyled small mb-0">
 										<li><strong>Prenatal:</strong> In-person or Virtual</li>
 										<li><strong>Postpartum:</strong> In-person or Virtual</li>
@@ -519,34 +524,111 @@
 						<div class="col-12 col-lg-6">
 							<div class="card card-soft p-4 h-100">
 								<h3 class="h5 fw-bold mb-3">Ready to get started?</h3>
-								<p class="small text-muted mb-3">
-									Book through the Total Lactation Network or reach out directly - whichever works best for your family.
+								<p class="small text-body-secondary mb-3">
+									Fill out the form below and I'll get back to you shortly, or reach out directly.
 								</p>
 								<ul class="list-unstyled mb-3 contact-list">
 									<li class="mb-2">
 										<strong>Phone:</strong>
-										<a href="tel:16233639104" class="link-underline link-underline-opacity-0">623-363-9104</a>
+										<a href="tel:+16233639104" class="link-underline link-underline-opacity-0">623-363-9104</a>
 									</li>
 									<li class="mb-0">
 										<strong>Email:</strong>
 										<a href="mailto:info@bbbaz.com" class="link-underline link-underline-opacity-0">info@bbbaz.com</a>
 									</li>
 								</ul>
-								<a
-									class="btn btn-primary w-100 mb-3"
-									href="https://lactationnetwork.com/"
-									target="_blank"
-									aria-label="Book via Total Lactation Network (opens booking)"
+								<form 
+									action="https://formspree.io/f/mykdqnpp" 
+									method="POST"
+									class="contact-form needs-validation"
+									novalidate
 								>
-									Book via Total Lactation Network (TLN)
-								</a>
+									<!-- Honeypot field for spam protection -->
+									<div class="d-none" aria-hidden="true">
+										<label for="contact-website">Website</label>
+										<input type="text" id="contact-website" name="_gotcha" tabindex="-1" autocomplete="off" />
+									</div>
+									<div class="mb-3">
+										<label for="contact-name" class="form-label small fw-bold">Name <span class="text-danger" aria-hidden="true">*</span><span class="visually-hidden">(required)</span></label>
+										<input 
+											type="text" 
+											class="form-control" 
+											id="contact-name" 
+											name="name" 
+											required 
+											autocomplete="name"
+											aria-describedby="name-feedback"
+										/>
+										<div id="name-feedback" class="invalid-feedback">Please enter your name.</div>
+									</div>
+									<div class="mb-3">
+										<label for="contact-email" class="form-label small fw-bold">Email <span class="text-danger" aria-hidden="true">*</span><span class="visually-hidden">(required)</span></label>
+										<input 
+											type="email" 
+											class="form-control" 
+											id="contact-email" 
+											name="email" 
+											required 
+											autocomplete="email"
+											aria-describedby="email-feedback"
+										/>
+										<div id="email-feedback" class="invalid-feedback">Please enter a valid email address.</div>
+									</div>
+									<div class="mb-3">
+										<label for="contact-phone" class="form-label small fw-bold">Phone <span class="text-body-secondary fw-normal">(optional)</span></label>
+										<input 
+											type="tel" 
+											class="form-control" 
+											id="contact-phone" 
+											name="phone" 
+											autocomplete="tel"
+											pattern="[0-9+\-\(\)\s]+"
+										/>
+									</div>
+									<div class="row g-3 mb-3">
+										<div class="col-12 col-sm-6">
+											<label for="contact-type" class="form-label small fw-bold">Consultation Type <span class="text-danger" aria-hidden="true">*</span><span class="visually-hidden">(required)</span></label>
+											<select class="form-select" id="contact-type" name="consultation_type" required aria-describedby="type-feedback">
+												<option value="" disabled selected>Select...</option>
+												<option value="Prenatal">Prenatal</option>
+												<option value="Postpartum">Postpartum</option>
+												<option value="Follow-up">Follow-up</option>
+												<option value="Other">Other / Not sure</option>
+											</select>
+											<div id="type-feedback" class="invalid-feedback">Please select a consultation type.</div>
+										</div>
+										<div class="col-12 col-sm-6">
+													<label for="contact-visit" class="form-label small fw-bold">Visit Preference <span class="text-danger" aria-hidden="true">*</span><span class="visually-hidden">(required)</span></label>
+													<select class="form-select" id="contact-visit" name="visit_preference" required aria-describedby="visit-feedback">
+														<option value="" disabled selected>Select...</option>
+														<option value="In-person (Phoenix area)">In-person (Phoenix area)</option>
+														<option value="Virtual">Virtual</option>
+														<option value="No preference">No preference</option>
+													</select>
+													<div id="visit-feedback" class="invalid-feedback">Please select a visit preference.</div>
+										</div>
+									</div>
+									<div class="mb-3">
+										<label for="contact-message" class="form-label small fw-bold">Message <span class="text-body-secondary fw-normal">(optional)</span></label>
+										<textarea 
+											class="form-control" 
+											id="contact-message" 
+											name="message" 
+											rows="4"
+											placeholder="Tell me more about your needs and current situation..."
+										></textarea>
+									</div>
+									<input type="hidden" name="_subject" value="New consultation request from bbbaz.com" />										<input type="hidden" name="g-recaptcha-response" id="recaptcha-token" />									<button type="submit" class="btn btn-primary w-100">
+										Send Request
+									</button>
+								</form>
 								
 							</div>
 						</div>
 					</div>
 				</div>
 				<div class="card card-soft p-4 p-lg-5 mt-4">
-					<h3 class="h6 text-uppercase text-muted mb-2">Stay connected</h3>
+					<h3 class="h6 text-uppercase text-body-secondary mb-2">Stay connected</h3>
 					<div class="d-flex flex-column flex-sm-row gap-2">
 						<a
 							class="btn btn-outline-primary flex-fill"
@@ -568,6 +650,7 @@
 						</a>
 					</div>
 				</div>
+			</div>
 		</section>
 		</main>
 
@@ -577,11 +660,11 @@
 			>
 				<div>
 					<strong>Babies Breastfeeding & Beyond</strong> &bull; Phoenix, AZ &bull;
-					<a href="tel:16233639104" class="link-underline link-underline-opacity-0">623-363-9104</a>
+					<a href="tel:+16233639104" class="link-underline link-underline-opacity-0">623-363-9104</a>
 				</div>
-				<div class="small text-muted">
+				<div class="small text-body-secondary">
 					&copy; <span id="year">2025</span> BBB AZ &bull;
-					<a class="text-muted" href="#top">Back to top</a>
+					<a class="text-body-secondary" href="#top">Back to top</a>
 				</div>
 			</div>
 </footer>
@@ -608,7 +691,7 @@
 					},
 					{
 						"@type": "Question",
-						"name": "What if breastfeeding is painful or baby isn’t latching?",
+						"name": "What if breastfeeding is painful or baby isn�t latching?",
 						"acceptedAnswer": {
 							"@type": "Answer",
 							"text": "I assess latch and positioning, screen for oral tethers, and create a step-by-step plan to reduce pain and improve feeding."
@@ -627,13 +710,27 @@
 			</div>
 		</noscript>
 
-		<script
-			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-			integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-			crossorigin="anonymous"
-			defer
-		></script>
-		<script src="main.js" defer></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous" defer></script>
+		<script src="main.js" defer></script>		<!-- Form submission and theme handling -->
+		<script>
+			document.addEventListener('DOMContentLoaded', function() {
+				const form = document.querySelector('.contact-form');
+				if (form) {
+					const params = new URLSearchParams(window.location.search);
+					if (params.has('success')) {
+						const alert = document.createElement('div');
+						alert.className = 'alert alert-success alert-dismissible fade show';
+						alert.innerHTML = 'Thank you! Your message was sent successfully. I\'ll get back to you shortly.';
+						const dismissBtn = document.createElement('button');
+						dismissBtn.type = 'button';
+						dismissBtn.className = 'btn-close';
+						dismissBtn.setAttribute('data-bs-dismiss', 'alert');
+						alert.appendChild(dismissBtn);
+						form.parentElement.insertBefore(alert, form);
+					}
+				}
+			});
+		</script>
 	</body>
 </html>
 
