@@ -344,7 +344,7 @@ console.log('main.js loaded');
 // Bootstrap form validation with reCAPTCHA v3
 (function () {
     'use strict';
-    var RECAPTCHA_SITE_KEY = '6Ldd130aAAAAACyUTo4XMfWf3CoPyq7U1hAGoTK';
+    var RECAPTCHA_SITE_KEY = '6LcT4n0sAAAAACmXbW8jkaQ6zVW6mwKsWV2o684K';
     
     function initFormHandlers() {
         console.log('Initializing form handlers');
