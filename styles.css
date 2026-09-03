@@ -1822,14 +1822,13 @@ button:focus-visible {
   .panel-label {
     text-align: center;
   }
-  /* FAQ and Topics keep their own left-aligned reading column */
-  #topics,
+  /* FAQ and Topics keep their own left-aligned reading column, but the
+     headings still centre with the rest (h2 is inline-block, so it has to be
+     the parent that centres it). */
+  .topic-list,
   #faq .accordion-body,
   #faq .accordion-button {
     text-align: left;
-  }
-  #topics-heading {
-    text-align: center;
   }
   /* Portrait and bio stack, both edge to edge */
   .about-card__bio {
